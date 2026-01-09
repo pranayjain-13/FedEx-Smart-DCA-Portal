@@ -50,7 +50,7 @@ $$Score = 100 - (Age \times 0.4) - (Amount / 3000)$$
 ---
 
 ## 🏃‍♂️ Setup Instructions
-1. Clone the repo: `git clone https://github.com/[YOUR-USERNAME]/fedex-intelligent-recovery`
+1. Clone the repo: `git clone https://github.com/pranayjain-13/FedEx-Smart-DCA-Portal.git`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Launch: `streamlit run app.py`
 

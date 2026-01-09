@@ -145,7 +145,7 @@ with tab1:
 
 # --- TAB 2: AGENCY PORTAL ---
 with tab2:
-    st.header("🏢 Secure Agency Gateway")
+    st.title("🏢 Secure Agency Gateway")
     st.caption("Role-based access for Debt Collection Agencies to manage and update assigned cases.")
     if not st.session_state.db.empty:
         # Simulated Role Selection
@@ -216,5 +216,5 @@ with tab2:
 # TAB 3: AUDIT LOG
 with tab3:
     st.title("System Audit Trail & Compliance")
-    st.markdown("Immutable record of all system activities.")
+    st.caption("Immutable record of all system activities.")
     st.table(st.session_state.audit_logs)

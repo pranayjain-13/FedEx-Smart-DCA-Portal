@@ -5,7 +5,7 @@ import plotly.express as px
 from datetime import datetime
 
 # --- CONFIG & BRANDING ---
-st.set_page_config(page_title="FedEx DCA | Intelligent Portal", layout="wide")
+st.set_page_config(page_title=" FedEx DCA | Portal", layout="wide")
 
 # FedEx Professional UI Styling
 st.markdown("""
@@ -66,18 +66,14 @@ st.sidebar.markdown("### Data Management")
 
 # Support for both CSV and XLSX
 uploaded_file = st.sidebar.file_uploader("📂 Import Legacy Cases", type=['csv', 'xlsx'])
-
 if uploaded_file:
     file_key= f"loaded_{uploaded_file.name}_{uploaded_file.size}"
-
     if st.session_state.get('current_file') != file_key:
         try:
-
             if uploaded_file.name.endswith('.csv'):
                 new_data = pd.read_csv(uploaded_file)
             else:
                 new_data = pd.read_excel(uploaded_file)
-        
             processed_df = apply_ai_logic(new_data)
             
             st.session_state.db = apply_ai_logic(new_data)
@@ -101,7 +97,6 @@ with tab1:
         total_cases = len(df)
         # We use .str.strip() to avoid errors with hidden spaces
         closed_cases = len(df[df['Status'].str.strip() == 'Closed'])
-
         if total_cases > 0:
             completion_rate = (closed_cases / total_cases) * 100
         else:
@@ -125,20 +120,17 @@ with tab1:
         # Visual Progress Bar
         st.progress(completion_rate/100)
         st.caption(f"{closed_cases} out of {len(df)} cases successfully closed.")
-
         st.divider()
 
         # 3. Enhanced Analytics Section
-        col_chart, col_status = st.columns([2, 1])
-        
+        col_chart, col_status = st.columns([2,1])
         with col_chart:
             st.write("### Recovery Forecast by Agency")
             fig = px.bar(df, x="Allocated Agency", y="Amount", color="Status", 
                          title="Portfolio by Agency and Status",
                          color_discrete_map={"Allocated": "#4D148C", "Closed": "#28a745", "Disputed": "#dc3545", "Contacted": "#FF6200"},
                          template="plotly_white")
-            st.plotly_chart(fig, use_container_width=True)
-
+            st.plotly_chart(fig, use_container_width=None,width="stretch")
         with col_status:
             st.write("### Status Breakdown")
             status_counts = df['Status'].value_counts().reset_index()
@@ -151,11 +143,10 @@ with tab1:
     else:
         st.info("👋 Welcome. Please upload an Excel or CSV file in the sidebar to generate the AI portfolio.")
 
-# --- TAB 2: AGENCY PORTAL (Final Look) ---
+# --- TAB 2: AGENCY PORTAL ---
 with tab2:
     st.header("🏢 Secure Agency Gateway")
     st.caption("Role-based access for Debt Collection Agencies to manage and update assigned cases.")
-
     if not st.session_state.db.empty:
         # Simulated Role Selection
         agency_list = ['Apex Collections', 'Global Recovery', 'Swift Debt Ltd']
@@ -174,18 +165,17 @@ with tab2:
         with col_stat2:
             agency_debt = agency_df['Amount'].sum()
             st.metric("Total Portfolio Value", f"${agency_debt:,.0f}")
-    # Filter to include only cases that are NOT 'Closed'
+            # Filter to include only cases that are NOT 'Closed'
             pending_debt_df = agency_df[agency_df['Status'] != 'Closed']
             agency_debt = pending_debt_df['Amount'].sum()
-    
             st.metric("Pending Portfolio Value", f"${agency_debt:,.0f}")
         st.divider()
 
-        # 🔍 SEARCH & UPDATE SECTION
+        # SEARCH & UPDATE SECTION
         st.subheader("Update Case Status")
-        search_id = st.text_input("🔍 Search by Case ID (e.g., FX-INV-10001)", placeholder="Type to filter...")
+        search_id = st.text_input("🔍 Search by Case ID (e.g., Fedex10)", placeholder="Type to filter...")
 
-        # Apply search filter to the selection list
+        # search filter to the selection list
         if search_id:
             filtered_list = agency_df[agency_df['Case ID'].str.contains(search_id, case=False)]
         else:
@@ -201,7 +191,7 @@ with tab2:
                     new_status = st.selectbox("Select New Status", 
                                             ["Allocated", "Contacted", "PTP (Promise to Pay)", "Disputed", "Closed"])
                 with c_form2:
-                    note = st.text_input("Add Operational Note", placeholder="e.g., Spoke to manager...")
+                    note = st.text_input("Note(OPTIONAL)", placeholder="e.g., Spoke to manager...")
 
                 if st.button("🚀 Submit Official Update"):
                     # 1. Update the Main Database
@@ -216,19 +206,15 @@ with tab2:
                     st.rerun() # This triggers the Progress Bar in Tab 1 to move!
             else:
                 st.warning("No matching cases found for this agency.")
-
         st.divider()
-        
         # DATA TABLE VIEW
         st.subheader(f"Current Assignments: {selected_agency}")
-        st.dataframe(agency_df, use_container_width=True, hide_index=True)
-        
+        st.dataframe(agency_df, use_container_width=True, hide_index=True) 
     else:
         st.info("⚠️ No data available. Please upload a CSV or Excel file in the 'Management Operations' tab.")
-
-        
+    
 # TAB 3: AUDIT LOG
 with tab3:
     st.title("System Audit Trail & Compliance")
-    st.markdown("Immutable record of all system activities, satisfying FedEx governance requirements.")
+    st.markdown("Immutable record of all system activities.")
     st.table(st.session_state.audit_logs)

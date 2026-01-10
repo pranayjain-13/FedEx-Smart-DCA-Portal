@@ -1,6 +1,6 @@
 # FedEx Smart DCA Portal
 ### AI-Driven Debt Collection & Agency Governance Portal & Predictive Allocation
-*demo video:*
+*📽️demo video:*
 
 
 https://github.com/user-attachments/assets/b80cbe8f-0a2d-4599-9d36-bb4313dc2025
@@ -20,7 +20,7 @@ Our Portal provides:
 
 ---
 
-## Pipeline
+## 📑Pipeline
 1. Ingestion: Uploading the CV/XLSX.
 2. Processing: Cleaning headers and calculating Al scores.
 3. Allocation: Sorting cases into specific agencies (Apex, Global, Swift).

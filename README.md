@@ -68,5 +68,6 @@ $$Score = 100 - (Age \times 0.4) - (Amount / 3000)$$
 4. Also, to view dashboards and analytics you can download this test file
 [Demo clients.csv](https://github.com/user-attachments/files/24540041/Demo.clients.csv)
 
+<hr>
 
-*Pranay Jain(Team Lead-me) , Pranshu Rana(Team Member) / VoidOps | FedEx Hackathon 2026*
+*Pranay Jain(Team Lead) , Pranshu Rana(Team Member) / VoidOps | FedEx Hackathon 2026*

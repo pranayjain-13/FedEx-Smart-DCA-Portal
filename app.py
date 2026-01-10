@@ -10,22 +10,34 @@ st.set_page_config(page_title=" FedEx DCA | Portal", layout="wide")
 # FedEx Professional UI Styling
 st.markdown("""
     <style>
-    :root { --fedex-purple: #4D148C; --fedex-orange: #FF6200; }
-    .main { background-color: #f4f7f6; }
-    div[data-testid="stMetricValue"] { 
-        background-color: white; 
-        padding: 20px; 
-        border-radius: 12px; 
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-        border-left: 6px solid #4D148C; 
+    .stApp {
+        color: var(--text-color);
+    }   
+    /* Custom class for headers to ensure they pop in Dark Mode */
+    .main-header {
+        color: #FF6200; /* FedEx Orange looks great in both modes */
+        font-weight: bold;
+        font-size: 32px;
     }
-    .stTabs [data-baseweb="tab-list"] { gap: 10px; }
-    .stTabs [data-baseweb="tab"] {
-        background-color: #f0f2f6;
-        border-radius: 4px 4px 0px 0px;
-        padding: 10px 20px;
+
+    /* Styling for the Metrics/Cards to give them a subtle border */
+    [data-testid="stMetricValue"] {
+        color: var(--text-color);
     }
-    .stTabs [aria-selected="true"] { background-color: #4D148C !important; color: white !important; }
+    
+    /* Ensure DataFrames are readable */
+    .dataframe {
+        color: var(--text-color) !important;
+        background-color: transparent !important;
+    }
+    /* progress bar */
+    .stProgress > div > div > div > div {
+        background-color: #28a745 !important; /* Success Green */
+    }
+    .stProgress {
+        height: 25px !important;
+        border-radius: 10px;
+    }
     </style>
     """, unsafe_allow_html=True)
 

@@ -1,5 +1,6 @@
 # FedEx Smart DCA Portal
 ### AI-Driven Debt Collection & Agency Governance Portal & Predictive Allocation
+*demo video:*
 
 ## 📋 Project Overview
 The **FedEx Intelligent Recovery Hub** is a next-generation solution for managing Debt Collection Agencies (DCAs). It replaces manual, spreadsheet-based workflows with a secure, automated portal that uses **Predictive AI Scoring** to optimize debt recovery.
@@ -53,5 +54,8 @@ $$Score = 100 - (Age \times 0.4) - (Amount / 3000)$$
 1. Clone the repo: `git clone https://github.com/pranayjain-13/FedEx-Smart-DCA-Portal.git`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Launch: `streamlit run app.py`
+4. Also, to view dashboards and analytics you can download this test file
+[Demo clients.csv](https://github.com/user-attachments/files/24540041/Demo.clients.csv)
 
-Pranay Jain / VoidOps | FedEx Hackathon 2026
+
+*Pranay Jain(Team Lead-me) , Pranshu Rana(Team Member) / VoidOps | FedEx Hackathon 2026*

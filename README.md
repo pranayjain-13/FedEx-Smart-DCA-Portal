@@ -16,7 +16,13 @@ Our Portal provides:
 
 ---
 
-## 🧠 The AI Scoring Engine
+## Pipeline
+1. Ingestion: Uploading the CV/XLSX.
+2. Processing: Cleaning headers and calculating Al scores.
+3. Allocation: Sorting cases into specific agencies (Apex, Global, Swift).
+4. Governance: Capturing every change in the Audit Log.
+ 
+## 🧠 The AI Scoring Engine(Model)
 The heart of the system is our **Predictive Recovery Index**. We use a specific formula to calculate the probability of success:
 
 $$Score = 100 - (Age \times 0.4) - (Amount / 3000)$$
@@ -24,7 +30,7 @@ $$Score = 100 - (Age \times 0.4) - (Amount / 3000)$$
 ### Why this formula?
 * **The 0.4 Time Factor:** In logistics, debt "spoils" quickly. This factor ensures that for every 30 days of delay, the recovery score drops by 12 points. This prioritizes **liquidity** and prevents accounts from becoming "bad debt."
 * **The 3000 Complexity Factor:** Large invoices are often harder to collect due to corporate approval layers. This factor ensures high-value accounts are flagged for specialized agency handling.
-<hr>
+---
 
 ## 🚀 Key Features
 

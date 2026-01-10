@@ -60,8 +60,8 @@ def apply_ai_logic(df):
     df['AI Score'] = (100 - (df['Age'] * 0.4) - (df['Amount'] / 3000)).clip(5, 100).astype(int)
     
     # Automated SOP Allocation
-    conditions = [(df['AI Score'] > 75), (df['AI Score'] > 45), (df['AI Score'] <= 45)]
-    choices = ['Apex Collections', 'Global Recovery', 'Swift Debt Ltd']
+    conditions = [(df['AI Score'] > 85), (df['AI Score'] > 75), (df['AI Score'] > 65), (df['AI Score']>55),(df['AI Score']<=55)]
+    choices = ['Apex Collections', 'Global Recovery', 'Swift Debt Ltd','Axis Collections','Banking Corporation']
     df['Allocated Agency'] = np.select(conditions, choices, default='Unallocated')
     df['Status'] = 'Allocated'
     return df
@@ -161,7 +161,7 @@ with tab2:
     st.caption("Role-based access for Debt Collection Agencies to manage and update assigned cases.")
     if not st.session_state.db.empty:
         # Simulated Role Selection
-        agency_list = ['Apex Collections', 'Global Recovery', 'Swift Debt Ltd']
+        agency_list = ['Apex Collections', 'Global Recovery', 'Swift Debt Ltd','Axis Collections','Banking Corporation']
         selected_agency = st.selectbox("Switch Agency View", agency_list)
         
         # Filter data so Agency A cannot see Agency B's cases

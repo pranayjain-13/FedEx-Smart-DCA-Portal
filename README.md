@@ -2,9 +2,10 @@
 ### AI-Driven Debt Collection & Agency Governance Portal & Predictive Allocation
 *📽️demo video:*
 
-
 https://github.com/user-attachments/assets/b80cbe8f-0a2d-4599-9d36-bb4313dc2025
 
+*🔗code:*
+https://github.com/pranayjain-13/FedEx-Smart-DCA-Portal/blob/87d5903847bbd0c16ea8c9a8447bcb1b8f06ed0a/app.py
 
 ## 📋 Project Overview
 The **FedEx Intelligent Recovery Hub** is a next-generation solution for managing Debt Collection Agencies (DCAs). It replaces manual, spreadsheet-based workflows with a secure, automated portal that uses **Predictive AI Scoring** to optimize debt recovery.

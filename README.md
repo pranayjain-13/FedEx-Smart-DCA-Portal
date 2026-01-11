@@ -26,6 +26,37 @@ Our Portal provides:
 2. Processing: Cleaning headers and calculating Al scores.
 3. Allocation: Sorting cases into specific agencies (Apex, Global, Swift).
 4. Governance: Capturing every change in the Audit Log.
+
+
+```mermaid
+graph TD
+    A[📂 CSV Ingestion] --> B{🛡️ VoidOps AI Engine}
+    B -->|Calculate Score| C[📊 BI Scoring - PPS/DPS]
+    B -->|Categorize Risk| D[⚠️ High/Med/Low Risk]
+    C --> E[🔒 Secure Agency Gateway]
+    D --> E
+    E -->|Auth: Apex| F[🏢 Apex Collections View]
+    E -->|Auth: Global| G[🏢 Global Recovery View]
+    E -->|Auth: Admin| H[👑 FedEx Executive Dashboard]
+    
+    style B fill:#4D148C,color:#fff
+    style H fill:#FF6200,color:#fff 
+
+```
+```mermaid
+graph TD
+    In[📥 Invoiced Debt] --> Formula[fa:fa-calculator PPS Calculation]
+    Formula --> H{PPS Score?}
+    H -->|> 85| Tier1[🏢 Apex Collections - High Priority]
+    H -->|75 - 85| Tier2[🏢 Global Recovery - Standard]
+    H -->|65 - 75| Tier3[🏢 Swift Debt Limited - Complex/Legal]
+    H -->|55 - 65| Tier4[🏢 Axis Collections - Complex/Legal]
+    H -->| <55 | Tier5[🏢 Banking Corporatin - Complex/Legal]
+    
+
+```
+
+
  
 ## 🧠 The AI Scoring Engine(Model)
 The heart of the system is our **Predictive Recovery Index**. We use a specific formula to calculate the probability of success:
